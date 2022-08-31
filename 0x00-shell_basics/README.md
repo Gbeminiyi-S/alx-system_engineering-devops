@@ -1,1 +1,1 @@
-Print working directory
+About Bash projects
