@@ -1,2 +1,3 @@
 #!/bin/bash
-file -C -magic-file School
+0 string SCHOOL School data
+!mime School
