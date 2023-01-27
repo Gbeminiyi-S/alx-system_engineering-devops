@@ -46,6 +46,6 @@ An introductory project on:
 [8-for_ls](https://github.com/Gbeminiyi-S/alx-system_engineering-devops/blob/master/0x04-loops_conditions_and_parsing/8-for_ls) - a Bash script that displays:
 - The content of the current directory
 - In a list format
-- Where only the part of the name after the first dash is displayed (refer to the example)
+- Where only the part of the name after the first dash is displayed
 - Use a `for` loop
 - Do not display hidden files
