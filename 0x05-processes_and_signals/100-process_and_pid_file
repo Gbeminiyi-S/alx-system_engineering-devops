@@ -6,17 +6,15 @@
 # Deletes the file /var/run/holbertonscript.pid and terminates upon
 # receiving a SIGQUIT or SIGTERM
 
-# Delete the pid file on exit
-trap "rm -f /var/run/myscript.pid; exit" SIGQUIT SIGTERM
-
 # Create the pid file
-echo $$ > /var/run/holbertonscript.pid
+echo "$$" > /var/run/holbertonscript.pid
 
 while true
 do
-  echo "To infinity and beyond"
-  sleep 2
-  trap 'echo "Y U no love me?!"' SIGINT
-  trap 'echo "I hate the kill command" && terminator' SIGTERM
-  trap 'terminator' SIGQUIT
+	echo "To infinity and beyond"
+	sleep 2
+ 	trap 'echo "Y U no love me?!"' SIGINT
+ 	trap 'echo "I hate the kill command" && rm -f /var/run/myscript.pid; exit ' SIGTERM
+	trap "rm -f /var/run/myscript.pid; exit" SIGQUIT
+
 done
