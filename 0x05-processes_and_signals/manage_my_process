@@ -5,7 +5,6 @@
 
 while (( 1 ))
 do
-	echo "I am alive!" >> /tmp/my_process
+	echo "I am alive!" > /tmp/my_process
 	sleep 2
 done
-chmod u+x /tmp/my_process
