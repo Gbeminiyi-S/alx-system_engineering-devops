@@ -1,21 +1,18 @@
 #!/usr/bin/env bash
-# Creates a file /var/run/holbertonscript.pid containing the script PID
+# Create a file /var/run/holbertonscript.pid containing the script PID.
 # Displays "To infinity and beyond" indefinitely
 # Displays "I hate the kill command" upon receiving a SIGTERM
 # Displays "Y U no love me?!" upon receiving a SIGINT
 # Deletes the file /var/run/holbertonscript.pid and terminates upon
-# receiving a SIGQUIT or SIGTERM
+# receiving a SIGQUIT or SIGTERM.
 
-echo $$ >> /var/run/myscript.pid
-
-
-trap "echo 'I hate the kill command'; rm -rf /var/run/myscript.pid; exit" SIGTERM
-trap "echo 'Y U no love me?!'" SIGINT
-trap "rm -rf /var/run/holbertonscript.pid; exit" SIGQUIT
-
+echo $$ > /var/run/holbertonscript.pid
 
 while true
-do 
-    echo 'To infinity and beyond' 
-    sleep 2
+do
+  echo "To infinity and beyond"
+  sleep 2
+  trap 'echo "Y U no love me?!"' SIGINT
+  trap 'echo "I hate the kill command" && terminator' SIGTERM
+  trap 'terminator' SIGQUIT
 done
