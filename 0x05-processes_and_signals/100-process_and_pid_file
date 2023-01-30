@@ -6,7 +6,7 @@
 # Deletes the file /var/run/holbertonscript.pid and terminates upon
 # receiving a SIGQUIT or SIGTERM.
 
-teminator() {
+terminator() {
 	rm /var/run/holbertonscript.pid
 	exit
 }
