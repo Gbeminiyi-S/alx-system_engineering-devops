@@ -22,7 +22,7 @@ int infinite_while(void)
  *
  * Return: Always 0
  */
-int main()
+int main(void)
 {
 	int count = 0;
 	pid_t child_pid;
@@ -42,5 +42,5 @@ int main()
 	}
 	infinite_while();
 
-	return 0;
+	return (0);
 }
