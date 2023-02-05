@@ -44,6 +44,7 @@ An introductory project on:
 
 [8-beheaded_process](https://github.com/Gbeminiyi-S/alx-system_engineering-devops/tree/master/0x05-processes_and_signals/8-beheaded_process) - a Bash script that kills the process `7-highlander`
 
+## Advanced
 [100-process_and_pid_file](https://github.com/Gbeminiyi-S/alx-system_engineering-devops/tree/master/0x05-processes_and_signals/100-process_and_pid_file) - 
 - Creates the file `/var/run/myscript.pid` containing its PID
 - Displays `To infinity and beyond` indefinitely
