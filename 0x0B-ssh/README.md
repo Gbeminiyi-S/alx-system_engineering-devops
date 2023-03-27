@@ -137,8 +137,8 @@ debug1: update_known_hosts: known hosts file /home/vagrant/.ssh/known_hosts2 doe
 ### advanced
 [100-puppet_ssh_config.pp](./100-puppet_ssh_config.pp) - Client configuration file (w/ Puppet) to make changes to our configuration file in order to connect to a server without typing a password.
 - Requirements
- - SSH client configuration must be configured to use the private key `~/.ssh/school`
- - SSH client configuration must be configured to refuse to authenticate using a password
+  - SSH client configuration must be configured to use the private key `~/.ssh/school`
+  - SSH client configuration must be configured to refuse to authenticate using a password
 ```
 vagrant@ubuntu:~$ sudo puppet apply 100-puppet_ssh_config.pp
 Notice: Compiled catalog for ubuntu-xenial in environment production in 0.11 seconds
