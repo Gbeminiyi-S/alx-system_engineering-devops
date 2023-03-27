@@ -12,5 +12,5 @@ else
   ssh_key=$4
 
   # Transfer the file using scp
-  scp -o StrictHostKeyChecking=no -i $ssh_key $file_path $username@$server_ip:~
+  scp -o StrictHostKeyChecking=no -i "$ssh_key" "$file_path" "$username@$server_ip":~
 fi
