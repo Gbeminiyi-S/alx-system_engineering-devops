@@ -1,16 +1,15 @@
-# Client configuration file (w/ Puppet)
+#!/usr/bin/puppet
+# configures ssh with puppet
 
-file {'/etc/ssh/ssh_config':
-  ensure  => 'present',
-  owner   => 'ubuntu',
-  group   => 'ubuntu',
-  mode    => '0600',
-  content => '
-    Host myserver
-        HostName 34.202.157.83
-        User ubuntu
-        IdentityFile ~/.ssh/school
-        PasswordAuthentication no
-  ',
+include stdlib
+
+file_line { 'nopwd':
+  ensure => present,
+  line   => 'PasswordAuthentication no',
+  path   => '/etc/ssh/ssh_config',
 }
-
+file_line { 'identity':
+  ensure => present,
+  line   => 'IdentityFile ~/.ssh/school',
+  path   => '/etc/ssh/ssh_config',
+}
