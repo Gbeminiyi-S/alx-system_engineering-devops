@@ -6,6 +6,7 @@
 - The second line of all Bash scripts should be a comment explaining what is the script doing
 
 ## File Description
+### mandatory
 [0-use_a_private_key](./0-use_a_private_key) -  a Bash script that uses `ssh` to connect to your server using the private key `~/.ssh/school` with the user `ubuntu`
 - Requirements:
   - Only use `ssh` single-character flags
@@ -133,7 +134,7 @@ debug1: channel 0: setting env LANG = "C.UTF-8"
 debug1: client_global_hostkeys_private_confirm: server used untrusted RSA signature algorithm ssh-rsa for key 0, disregarding
 debug1: update_known_hosts: known hosts file /home/vagrant/.ssh/known_hosts2 does not exist
 ```
-
+### advanced
 [100-puppet_ssh_config.pp](./100-puppet_ssh_config.pp) - Client configuration file (w/ Puppet) to make changes to our configuration file in order to connect to a server without typing a password.
 - Requirements
  - SSH client configuration must be configured to use the private key `~/.ssh/school`
