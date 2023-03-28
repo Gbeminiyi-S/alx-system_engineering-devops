@@ -26,7 +26,6 @@ echo "server {
         root /etc/nginx/html;
         index index.html index.htm;
 
-        server_name 135836-web-01;
 }" > /etc/nginx/sites-available/default
 
 # Restart Nginx
