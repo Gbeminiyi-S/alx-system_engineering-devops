@@ -16,7 +16,7 @@ touch /etc/nginx/html/index.html
 echo "Hello World!" > /etc/nginx/html/index.html
 
 # Creating the Server Block File
-echo "server {
+echo "server { 
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	root /etc/nginx/html;
