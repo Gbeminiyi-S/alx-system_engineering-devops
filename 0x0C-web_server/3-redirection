@@ -15,17 +15,8 @@ mkdir /etc/nginx/html
 touch /etc/nginx/html/index.html
 echo "Hello World!" > /etc/nginx/html/index.html
 
-# Creating the Server Block File
-echo "server { 
-	listen 80 default_server;
-	listen [::]:80 default_server;
-	root /etc/nginx/html;
-	index index.html index.htm index.nginx-debian.html;
-
-	location /redirect_me {
-	return 301 http://livescores.com/;
-}
-" > /etc/nginx/sites-available/default
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # Restart Nginx
 service nginx restart
