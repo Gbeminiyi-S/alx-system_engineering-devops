@@ -1,38 +1,25 @@
-#Set up Nginx
-class nginx {
-  package { 'nginx':
-    ensure => 'installed',
-  }
+# Script to install nginx using puppet
 
-  service { 'nginx':
-    ensure => 'running',
-    enable => true,
-  }
+package {'nginx':
+  ensure => 'present',
 }
 
-#Set up firewall
-class firewall {
-  Firewall {
-    dport => '80',
-    proto => 'tcp',
-    action => 'accept',
-  }
+exec {'install':
+  command  => 'sudo apt-get update ; sudo apt-get -y install nginx',
+  provider => shell,
+
 }
 
-#Define the redirect
-
-nginx::vhost { 'redirect_me':
-  port => '80',
-  ssl => false,
-  www_root => '/var/www/redirect_me',
-  rewrite_to => 'http://www.example.com',
-  rewrite_rule => '^/redirect_me/(.*)$ /$1 redirect;',
+exec {'Hello':
+  command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
+  provider => shell,
 }
 
-#Set up hello world page
+exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/blog.ehoneahobed.com\/;\\n\\t}/" /etc/nginx/sites-available/default':
+  provider => shell,
+}
 
-file { '/var/www/redirect_me/index.html':
-  ensure => present,
-  content => "Hello World!",
-  require => Package['nginx'],
+exec {'run':
+  command  => 'sudo service nginx restart',
+  provider => shell,
 }
