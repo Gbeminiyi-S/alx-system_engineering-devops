@@ -8,9 +8,6 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
-# Adjust the firewall
-sudo ufw allow 'Nginx HTTP'
-
 # Configuration
 mkdir /etc/nginx/html
 
@@ -20,13 +17,12 @@ echo "Hello World!" > /etc/nginx/html/index.html
 
 # Creating the Server Block File
 echo "server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-
-        root /etc/nginx/html;
-        index index.html index.htm;
-
-}" > /etc/nginx/sites-available/default
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /etc/nginx/html;
+	index index.html index.htm index.nginx-debian.html;
+}
+" > /etc/nginx/sites-available/default
 
 # Restart Nginx
 service nginx restart
