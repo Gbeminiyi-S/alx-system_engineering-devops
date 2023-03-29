@@ -14,5 +14,5 @@ ufw allow 'Nginx HTTP'
 # Creating Sample Page
 echo "Hello World!" > /var/www/html/index.html
 
-# Restart Nginx
-nginx -s reload
+# Start Nginx
+service nginx start
