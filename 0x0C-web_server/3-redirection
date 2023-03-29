@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
-# Installs Nginx with the following configurations:
-#    Listens on port 80.
-#    Returns a page containing "Hello World" when queried
-#    at the root with a curl GET request.
+# Configure Nginx server so that /redirect_me is redirecting to another page
 
 # Install nginx
-sudo apt-get -y update
+sudo apt-get update
 sudo apt-get install -y nginx
 
-# configure nginx to listen on port 80
+# Configuration
 ufw allow 'Nginx HTTP'
 
 # Creating Sample Page
 echo "Hello World!" > /var/www/html/index.html
+
+# add the following configuration to the existing server block
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # Restart Nginx
 nginx -s reload
