@@ -8,6 +8,12 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
+# Configuration
+mkdir /etc/nginx/html
+
+# Creating Sample Page
+echo "Hello World!" > /etc/nginx/html/index.html
+
 string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
 sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
