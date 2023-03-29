@@ -8,10 +8,9 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
-echo -e "Ceci n'est pas une page" > /etc/nginx/html/404.html
+echo -e "Ceci n'est pas une page\n\n" > /etc/nginx/html/404.html
 string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/etc\/nginx\/html;\n\t\tinternal;\n\t}"
 sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # Restart Nginx
 service nginx restart
-#
