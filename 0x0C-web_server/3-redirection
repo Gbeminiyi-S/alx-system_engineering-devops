@@ -5,17 +5,14 @@
 #    at the root with a curl GET request.
 
 # Install nginx
-sudo apt-get update
+sudo apt-get -y update
 sudo apt-get install -y nginx
 
-# Configuration
-mkdir /etc/nginx/html
+# configure nginx to listen on port 80
+ufw allow 'Nginx HTTP'
 
 # Creating Sample Page
-echo "Hello World!" > /etc/nginx/html/index.html
-
-string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
-sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+echo "Hello World!" > /var/www/html/index.html
 
 # Restart Nginx
-service nginx restart
+nginx -s reload
