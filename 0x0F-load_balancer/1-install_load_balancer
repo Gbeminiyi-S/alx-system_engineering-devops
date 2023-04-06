@@ -6,6 +6,7 @@ sudo add-apt-repository ppa:vbernat/haproxy-2.7 -y
 sudo apt-get update -y
 sudo apt-get install haproxy=2.7.\* -y
 
+# Configure HAProxy using roundrobin algorithm
 echo "
 frontend http_front
         bind *:80
