@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-"""Install and configure HAproxy on your lb-01 server"""
+# Installs and configure HAproxy on the lb-01 server
+# using roundrobin algorithm
 
 sudo apt-get install -y --no-install-recommends software-properties-common
 sudo add-apt-repository ppa:vbernat/haproxy-2.7 -y
