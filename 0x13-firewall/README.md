@@ -19,6 +19,7 @@ Requirements:
 [100-port_forwarding](./100-port_forwarding) - a copy of the modified `ufw` configuration file
 Requirements:
 - Configure `web-01` so that its firewall redirects port `8080/TCP` to port `80/TCP`
+
 Terminal in `web-01`:
 ```
 root@03-web-01:~# netstat -lpn
