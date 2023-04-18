@@ -1,11 +1,12 @@
 # 0x0E. Web stack debugging #1
 
-## Requirements
-- Files are to be executed on Ubuntu 20.04 LTS using `MySQL 8.0` (version 8.0.25)
-- The first line of all Bash scripts should be exactly `#!/usr/bin/env bash`
-- Bash script must pass `Shellcheck` (version 0.3.7) without any error
-- Not allowed to use `wget`
+# Requirements
+- Files are to be executed on Ubuntu 20.04 LTS - The first line of all Bash scripts should be exactly `#!/usr/bin/env bash`
+- The second line of all your Bash scripts should be a comment explaining what is the script doing- Bash script must pass Shellcheck (version 0.3.7) without any error
+- Not allowed to use wget
 
+# File Descriptions
+## Mandatory
 [0-nginx_likes_port_80](./0-nginx_likes_port_80) - Using your debugging skills, find out what’s keeping your Ubuntu container’s Nginx installation from listening on port `80`
 - Requirements:
   - Nginx must be running, and listening on port `80` of all the server’s active IPv4 IPs
