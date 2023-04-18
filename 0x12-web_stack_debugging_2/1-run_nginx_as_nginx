@@ -2,16 +2,19 @@
 # Run Nginx as Nginx
 
 # Stop nginx if it's currently running
-service nginx stop
+sudo service nginx stop
 
 # Change nginx user in nginx.conf
 sed -i 's/user www-data/user nginx/' /etc/nginx/nginx.conf
 
 # Change ownership of nginx directories to nginx user
-chown -R nginx:nginx /var/log/nginx /var/lib/nginx
+chmod 644 /etc/nginx/nginx.conf
 
 # Configure nginx to listen on all active IPs on port 8080
 sed -i 's/80/8080/g' /etc/nginx/sites-available/default
 
+# apache may interfere with nginx so kill the process if it is running
+pkill apache2
+
 # Start nginx
-service nginx start
+sudo -u nginx service nginx start
