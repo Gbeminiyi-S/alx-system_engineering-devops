@@ -5,12 +5,12 @@ import sys
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
-    name = requests.get(f"{url}users/{sys.argv[1]}").json().get("name")
-    tasks = requests.get(f"{url}users/{sys.argv[1]}/todos").json()
+    name = requests.get("{}users/{}".format(url, sys.argv[1])).json()
+    tasks = requests.get("{}users/{}/todos".format(url, sys.argv[1])).json()
     c_tasks = [task for task in tasks if task.get("completed") is True]
     titles = [task.get("title") for task in tasks
               if task.get("completed") is True]
-
-    print(f"Employee {name} is done with tasks({len(c_tasks)}/{len(tasks)}):")
+    print("Employee {} is done with tasks({}/{}):"
+          .format(name.get("name"), len(c_tasks), len(tasks)))
     for title in titles:
-        print(f"\t{title}")
+        print("\t{}".format(title))
