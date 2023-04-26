@@ -13,8 +13,8 @@ if __name__ == "__main__":
     user = requests.get("{}users/{}".format(url, user_id)).json()
     tasks = requests.get("{}users/{}/todos".format(url, user_id)).json()
     data_rows = [
-        [sys.argv[1], user.get("username"), task.get("completed"), task.get("title")]
-        for task in tasks
+        [sys.argv[1], user.get("username"), task.get("completed"),
+            task.get("title")] for task in tasks
     ]
 
     # open a new CSV file in write mode
