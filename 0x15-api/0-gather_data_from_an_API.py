@@ -13,4 +13,4 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):"
           .format(name.get("name"), len(c_tasks), len(tasks)))
     for title in titles:
-        print("\t{}".format(title))
+        print("\t {}".format(title))
