@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""a Python script that, using `REST API`, for a given employee ID,
-returns information about his/her TODO list progress"""
+"""Returns information about an employee's TODO list progress"""
 import requests
 import sys
 
