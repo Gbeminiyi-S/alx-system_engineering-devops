@@ -16,7 +16,7 @@ if __name__ == "__main__":
                                   "completed": task.get("completed")}
                                  for task in tasks
                                  if task.get("userId") == user.get("id")]
-                                 for user in users
+                for user in users
            }
     # open a new JSON file in write mode
     with open("todo_all_employees.json", "w", newline="") as file:
