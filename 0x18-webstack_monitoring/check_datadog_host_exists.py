@@ -1,14 +1,18 @@
 #!/usr/bin/python3
-"""
-Get the total number of active hosts returns "OK" response
-"""
+import requests
 
-from datadog_api_client import ApiClient, Configuration
-from datadog_api_client.v1.api.hosts_api import HostsApi
+# Set up the API endpoint and parameters
+api_url = "https://api.datadoghq.com/api/v1/dashboard/"
+api_key = "226e10789a80bc3e694ee9ad4f70aedb"
+api_app_key = "5a5939092b6aeb2aed245c66d6b7bdec4303d8c4"
+headers = {'Content-type': 'application/json', 'DD-API-KEY': api_key, 'DD-APPLICATION-KEY': api_app_key}
+query_params = {'filter': 'host:135836-web-01'}
 
-configuration = Configuration()
-with ApiClient(configuration) as api_client:
-    api_instance = HostsApi("54.146.81.195")
-    response = api_instance.get_host_totals()
+# Make the API call to get the host details
+response = requests.get(api_url, headers=headers, params=query_params)
 
-    print(response)
+# Check the response status code
+if response.status_code == 200:
+    # Parse the JSON response
+    response_json = response.json()
+    print(response_json)
