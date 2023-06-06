@@ -1,14 +1,9 @@
-#!/usr/bin/python3
-"""Queries the Reddit API, parses the title of all hot articles,
-   and prints a sorted count of given keywords
-"""
 import requests
 
 
-def count_words(subreddit, word_list, after="", dictionary=None):
-    if dictionary is None:
-        dictionary = {}
-
+def count_words(subreddit, word_list, array=None, after=""):
+    if array is None:
+        array = {}
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {"User-Agent": "Mozilla/5.0"}
     params = {"after": after}
@@ -23,22 +18,17 @@ def count_words(subreddit, word_list, after="", dictionary=None):
             split = entry.get("data").get("title").lower().split()
 
             for word in word_list:
-                if word in split:
-                    if word in dictionary:
-                        dictionary[word] += 1
+                if word.lower() in split:
+                    times = len([t for t in split if t == word.lower()])
+                    if array.get(word) is None:
+                        array[word] = times
                     else:
-                        dictionary[word] = 1
+                        array[word] += times
 
         if after:
-            count_words(subreddit, word_list, after, dictionary)
+            count_words(subreddit, word_list, array, after)
         else:
-            # sort the dictionary by value
-            if len(dictionary) == 0:
-                print("")
-                return
-            dictionary = dict(sorted(dictionary.items(), key=lambda x: x[1],
-                              reverse=True))
-            for key, value in dictionary.items():
-                print("{}: {}".format(key, value))
-    else:
-        print("")
+            sorted_results = sorted(array.items(), key=lambda x: (-x[1],
+                                    x[0].lower()))
+            for word, count in sorted_results:
+                print(f"{word.lower()}: {count}")
