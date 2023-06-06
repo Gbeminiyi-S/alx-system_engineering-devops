@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" Queries the Reddit API, parses the title of all hot articles,
-    and prints a sorted count of given keywords
+"""Function to count words in all hot posts of a given Reddit subreddit
+   that are found in a list
 """
 import requests
 
