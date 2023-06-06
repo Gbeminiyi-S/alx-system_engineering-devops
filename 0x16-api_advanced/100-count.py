@@ -30,13 +30,15 @@ def count_words(subreddit, word_list, after="", dictionary=None):
                         dictionary[word] = 1
 
         if after:
-            if len(dictionary):
-                print("")
-                return
             count_words(subreddit, word_list, after, dictionary)
         else:
             # sort the dictionary by value
+            if len(dictionary):
+                print("")
+                return
             dictionary = dict(sorted(dictionary.items(), key=lambda x: x[1],
                               reverse=True))
             for key, value in dictionary.items():
                 print("{}: {}".format(key, value))
+    else:
+        print("")
