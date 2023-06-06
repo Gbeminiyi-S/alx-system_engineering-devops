@@ -5,7 +5,10 @@
 import requests
 
 
-def count_words(subreddit, word_list, after="", dictionary={}):
+def count_words(subreddit, word_list, after="", dictionary=None):
+    if dictionary is None:
+        dictionary = {}
+
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {"User-Agent": "Mozilla/5.0"}
     params = {"after": after}
