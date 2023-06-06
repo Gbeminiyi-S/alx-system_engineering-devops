@@ -36,7 +36,9 @@ def count_words(subreddit, word_list, after="", dictionary=None):
             if len(dictionary) == 0:
                 print("")
                 return
-            dictionary = dict(sorted(dictionary.items(), key=lambda x: x[1],
-                              reverse=True))
+            sorted_dict = dict(sorted(dictionary.items(),
+                               key=lambda x: (-x[1], x[0])))
             for key, value in dictionary.items():
                 print("{}: {}".format(key, value))
+    else:
+        print("")
