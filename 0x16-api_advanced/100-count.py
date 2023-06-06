@@ -27,6 +27,9 @@ def count_words(subreddit, word_list, after="", dictionary={}):
                         dictionary[word] = 1
 
         if after:
+            if len(dictionary):
+                print("")
+                return
             count_words(subreddit, word_list, after, dictionary)
         else:
             # sort the dictionary by value
